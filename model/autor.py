@@ -1,11 +1,11 @@
 class Autor:
 
 
-    def __init__(self, id: int, nome: str, email: str, telefone: str, bio: str):
-        self.__id: int = id
+    def __init__(self, nome: str, email: str, telefone: str, bio: str, id=0):
+        self.__id = id
         self.__nome: str = nome
         self.__email: str = email
-        self.__tefefone: str = telefone
+        self.__telefone: str = telefone
         self.__bio: str = bio
 
 

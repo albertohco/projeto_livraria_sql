@@ -54,12 +54,11 @@ class AutorService:
         print('\nAdicionando autor...')
 
         try:
-            id = self.__autor_dao.ultimo_id() + 1
             nome = input('Digite o nome do autor: ')
             email = input('Digite o email do autor: ')
             telefone = input('Digite o telefone do autor: ')
             bio = input('Digite uma bio reduzida do autor: ')
-            novo_autor = Autor(id, nome, email, telefone, bio)
+            novo_autor = Autor(nome, email, telefone, bio)
             self.__autor_dao.adicionar(novo_autor)
             print('Autor adicionado com sucesso!')
         except Exception as e:
