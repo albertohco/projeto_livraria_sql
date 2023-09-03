@@ -4,7 +4,6 @@ from database.conexao_factory import ConexaoFactory
 class CategoriaDAO:
 
     def __init__(self):
-        self.__categorias: list[Categoria] = list()
         self.__conexao_factory = ConexaoFactory()
 
     def listar(self) -> list[Categoria]:
