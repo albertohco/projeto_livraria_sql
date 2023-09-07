@@ -15,7 +15,7 @@ class EditoraService:
                 '1 - Listar todas as editoras\n'
                 '2 - Adicionar nova editora\n'
                 '3 - Excluir editora\n'
-                '4 - Ver categoria por Id\n'
+                '4 - Ver editora por Id\n'
                 '0 - Voltar ao menu anterior\n')
         escolha = input('Digite a opção: ')
 
@@ -57,8 +57,7 @@ class EditoraService:
             nome = input('Digite o nome da editora: ')
             endereco = input('Digite o endereço da editora: ')
             telefone = input('Digite o telefone da editora: ')
-            nova_editora = Editora(id, nome, endereco, telefone)
-
+            nova_editora = Editora(nome, endereco, telefone)
             self.__editora_dao.adicionar(nova_editora)
             print('Editora adicionada com sucesso!')
         except Exception as e:
