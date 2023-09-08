@@ -1,0 +1,92 @@
+[
+    {
+        "_Editora__id": 1,
+        "_Editora__nome": "Martin Claret",
+        "_Editora__endereco": "Rua Alegrete, 62 - Sumaré / São Paulo - SP 1254-010",
+        "_Editora__telefone": "(67) 2600-8963"
+    },
+    {
+        "_Editora__id": 2,
+        "_Editora__nome": "Principis",
+        "_Editora__endereco": "Rua Simplício Dias, 917 - Nossa Senhora do Carmo / São Paulo - SP 64200-055",
+        "_Editora__telefone": "(67) 99770-1390"
+    },
+    {
+        "_Editora__id": 3,
+        "_Editora__nome": "Galera",
+        "_Editora__endereco": "Rua Colonizador Ênio Pipino, 958 - Residencial Pérola / Sinop - MT 78558-099",
+        "_Editora__telefone": "(69) 2859-6853"
+    },
+    {
+        "_Editora__id": 4,
+        "_Editora__nome": "Intrínseca",
+        "_Editora__endereco": "Rua Caviana, 562 - Floresta Sul / Rio Branco - AC 69912-497",
+        "_Editora__telefone": "(69) 99420-7385"
+    },
+    {
+        "_Editora__id": 5,
+        "_Editora__nome": "Rocco",
+        "_Editora__endereco": "Rua Fortaleza, 404 - Santa Isabel / Várzea Grande - MT 78150-374",
+        "_Editora__telefone": "(47) 3791-2313"
+    },
+    {
+        "_Editora__id": 6,
+        "_Editora__nome": "HarperCollins",
+        "_Editora__endereco": "Rua 12 de Outubro, 327 - São Joaquim / Teresina - PI 64004-070",
+        "_Editora__telefone": "(47) 98957-7895"
+    },
+    {
+        "_Editora__id": 7,
+        "_Editora__nome": "Editora Aleph",
+        "_Editora__endereco": "Beco Um, 426 - Aberta dos Morros / Porto Alegre - RS 91751-356",
+        "_Editora__telefone": "(86) 3950-8740"
+    },
+    {
+        "_Editora__id": 8,
+        "_Editora__nome": "Editora Arqueiro",
+        "_Editora__endereco": "Rua das camelias, 25 - Centro / Fortaleza - CE",
+        "_Editora__telefone": "(88) 8185-0259"
+    },
+    {
+        "_Editora__id": 10,
+        "_Editora__nome": "Arqueiro Boladão",
+        "_Editora__endereco": "Rua teste, 87 São Paulo",
+        "_Editora__telefone": "11 1234-5678"
+    },
+    {
+        "_Editora__id": 11,
+        "_Editora__nome": "Galera Irada",
+        "_Editora__endereco": "Rua SÃ£o Paulo, 34 - SÃ£o Paulo - SP",
+        "_Editora__telefone": " (11) 1234-5678"
+    },
+    {
+        "_Editora__id": 12,
+        "_Editora__nome": "Arqueiro BoladÃ£o",
+        "_Editora__endereco": "Rua Tebas, 56 - SÃ£o Paulo - SP",
+        "_Editora__telefone": " (11) 2345-1234"
+    },
+    {
+        "_Editora__id": 13,
+        "_Editora__nome": "Ilha dos Livros",
+        "_Editora__endereco": "Rua Roque Pretrela, 56 - SÃ£o Paulo - SP",
+        "_Editora__telefone": " (11) 7892-3456"
+    },
+    {
+        "_Editora__id": 14,
+        "_Editora__nome": "Galera Irada",
+        "_Editora__endereco": "Rua SÃ£o Paulo, 34 - SÃ£o Paulo - SP",
+        "_Editora__telefone": "(11) 1234-5678"
+    },
+    {
+        "_Editora__id": 15,
+        "_Editora__nome": "Arqueiro BoladÃ£o",
+        "_Editora__endereco": "Rua Tebas, 56 - SÃ£o Paulo - SP",
+        "_Editora__telefone": "(11) 2345-1234"
+    },
+    {
+        "_Editora__id": 16,
+        "_Editora__nome": "Ilha dos Livros",
+        "_Editora__endereco": "Rua Roque Pretrela, 56 - SÃ£o Paulo - SP",
+        "_Editora__telefone": "(11) 7892-3456"
+    }
+]

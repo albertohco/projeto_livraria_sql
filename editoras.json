@@ -1,0 +1,17 @@
+[
+    {
+        "nome" : "Galera Irada",
+        "endereco" : "Rua São Paulo, 34 - São Paulo - SP", 
+        "telefone" : "(11) 1234-5678"
+    },
+    {
+        "nome" : "Arqueiro Boladão",
+        "endereco" : "Rua Tebas, 56 - São Paulo - SP", 
+        "telefone" : "(11) 2345-1234"
+    },
+    {
+        "nome" : "Ilha dos Livros",
+        "endereco" : "Rua Roque Pretrela, 56 - São Paulo - SP", 
+        "telefone" : "(11) 7892-3456"
+    }
+]
