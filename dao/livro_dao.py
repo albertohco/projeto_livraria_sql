@@ -1,5 +1,4 @@
 from model.livro import Livro
-from model.categoria import Categoria
 from database.conexao_factory import ConexaoFactory
 from dao.categoria_dao import CategoriaDAO
 from dao.editora_dao import EditoraDAO
