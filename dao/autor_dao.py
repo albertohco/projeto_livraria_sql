@@ -1,6 +1,7 @@
 from model.autor import Autor
 from database.conexao_factory import ConexaoFactory
 
+
 class AutorDAO:
 
     def __init__(self):
@@ -13,8 +14,9 @@ class AutorDAO:
         cursor.execute("SELECT id, nome, email, telefone, bio FROM autores")
         resultados = cursor.fetchall()
         for resultado in resultados:
-            cat = Autor(resultado[1],resultado[2],resultado[3],resultado[4],resultado[0])
-            autores.append(cat)
+            aut = Autor(resultado[1], resultado[2], resultado[3], resultado[4])
+            aut.id = resultado[0]
+            autores.append(aut)
         cursor.close()
         conexao.close()
         return autores
@@ -22,7 +24,8 @@ class AutorDAO:
     def adicionar(self, autor: Autor) -> None:
         conexao = self.__conexao_factory.get_conexao()
         cursor = conexao.cursor()
-        cursor.execute(f"INSERT INTO autores (nome, email, telefone, bio) VALUES ('{autor.nome}','{autor.email}','{autor.telefone}','{autor.bio}')")
+        cursor.execute(
+            f"INSERT INTO autores (nome, email, telefone, bio) VALUES ('{autor.nome}','{autor.email}','{autor.telefone}','{autor.bio}')")
         conexao.commit()
         cursor.close()
         conexao.close()
@@ -43,11 +46,12 @@ class AutorDAO:
         aut = None
         conexao = self.__conexao_factory.get_conexao()
         cursor = conexao.cursor()
-        cursor.execute("SELECT id, nome, email, telefone, bio FROM autores WHERE id= %s", (autor_id,))
+        cursor.execute(
+            "SELECT id, nome, email, telefone, bio FROM autores WHERE id= %s", (autor_id,))
         resultado = cursor.fetchone()
         if resultado:
-            aut = Autor(resultado[1],resultado[2],resultado[3],resultado[4],resultado[0])
+            aut = Autor(resultado[1], resultado[2], resultado[3], resultado[4])
+            aut.id = resultado[0]
         cursor.close()
         conexao.close()
         return aut
-    

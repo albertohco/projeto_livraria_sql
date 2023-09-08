@@ -2,15 +2,16 @@ from model.categoria import Categoria
 from model.editora import Editora
 from model.autor import Autor
 
+
 class Livro:
 
-    def __init__(self, id: int, titulo: str, resumo: str, ano: int, paginas: int, isbn: str, categoria: Categoria, editora: Editora, autor: Autor):
-        self.__id: int = id
+    def __init__(self, titulo: str, isbn: str, paginas: int, ano: int, resumo: str, categoria: Categoria, editora: Editora, autor: Autor):
+        self.__id: int = 0
         self.__titulo: str = titulo
-        self.__resumo: str = resumo
-        self.__ano: int = ano
-        self.__paginas: int = paginas
         self.__isbn: str = isbn
+        self.__paginas: int = paginas
+        self.__ano: int = ano
+        self.__resumo: str = resumo
         self.__categoria: Categoria = categoria
         self.__editora: Editora = editora
         self.__autor: Autor = autor
@@ -18,7 +19,7 @@ class Livro:
     @property
     def id(self) -> int:
         return self.__id
-    
+
     @id.setter
     def id(self, id: int):
         self.__id = id
@@ -32,20 +33,12 @@ class Livro:
         self.__titulo = titulo
 
     @property
-    def resumo(self) -> str:
-        return self.__resumo
+    def isbn(self) -> str:
+        return self.__isbn
 
-    @resumo.setter
-    def resumo(self, resumo: str):
-        self.__resumo = resumo
-
-    @property
-    def ano(self) -> int:
-        return self.__ano
-
-    @ano.setter
-    def ano(self, ano: int):
-        self.__ano = ano
+    @isbn.setter
+    def isbn(self, isbn: str):
+        self.__isbn = isbn
 
     @property
     def paginas(self) -> int:
@@ -56,12 +49,20 @@ class Livro:
         self.__paginas = paginas
 
     @property
-    def isbn(self) -> str:
-        return self.__isbn
+    def ano(self) -> int:
+        return self.__ano
 
-    @titulo.setter
-    def isbn(self, isbn: str):
-        self.__isbn = isbn
+    @ano.setter
+    def ano(self, ano: int):
+        self.__ano = ano
+
+    @property
+    def resumo(self) -> str:
+        return self.__resumo
+
+    @resumo.setter
+    def resumo(self, resumo: str):
+        self.__resumo = resumo
 
     @property
     def categoria(self) -> Categoria:

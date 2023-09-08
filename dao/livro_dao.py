@@ -1,39 +1,72 @@
 from model.livro import Livro
+from model.categoria import Categoria
+from database.conexao_factory import ConexaoFactory
+from dao.categoria_dao import CategoriaDAO
+from dao.editora_dao import EditoraDAO
+from dao.autor_dao import AutorDAO
+
 
 class LivroDAO:
 
     def __init__(self):
-        self.__livros: list[Livro] = list()
+        self.__conexao_factory = ConexaoFactory()
 
     def listar(self) -> list[Livro]:
-        return self.__livros
+        livros = list()
+        conexao = self.__conexao_factory.get_conexao()
+        cursor = conexao.cursor()
+        cursor.execute(
+            "SELECT id, titulo, isbn, paginas, ano, resumo, categoria_id, editora_id, autor_id FROM livros")
+        resultados = cursor.fetchall()
+        for resultado in resultados:
+            categoria = CategoriaDAO().buscar_por_id(resultado[6])
+            editora = EditoraDAO().buscar_por_id(resultado[7])
+            autor = AutorDAO().buscar_por_id(resultado[8])
+            liv = Livro(resultado[1], resultado[2], resultado[3], resultado[4],
+                        resultado[5], categoria, editora, autor)
+            liv.id = resultado[0]
+            livros.append(liv)
+        cursor.close()
+        conexao.close()
+        return livros
 
     def adicionar(self, livro: Livro) -> None:
-        self.__livros.append(livro)
+        conexao = self.__conexao_factory.get_conexao()
+        cursor = conexao.cursor()
+        cursor.execute(f"INSERT INTO livros (titulo, isbn, paginas, ano, resumo, categoria_id, editora_id, autor_id) VALUES \
+                       ('{livro.titulo}', '{livro.isbn}', '{livro.paginas}', '{livro.ano}', '{livro.resumo}', '{livro.categoria.id}', '{livro.editora.id}', '{livro.autor.id}')")
+        conexao.commit()
+        cursor.close()
+        conexao.close()
 
     def remover(self, livro_id: int) -> bool:
-        encontrado = False
-        for l in self.__livros:
-            if (l.id == livro_id):
-                index = self.__livros.index(l)
-                self.__livros.pop(index)
-                encontrado = True
-                break
-        return encontrado
+        conexao = self.__conexao_factory.get_conexao()
+        cursor = conexao.cursor()
+        cursor.execute("DELETE FROM livros WHERE id = %s", (livro_id,))
+        livros_removidos = cursor.rowcount
+        conexao.commit()
+        cursor.close()
+        conexao.close()
+
+        if (livros_removidos == 0):
+            return False
+
+        return True
 
     def buscar_por_id(self, livro_id) -> Livro:
         liv = None
-        for l in self.__livros:
-            if (l.id == livro_id):
-                liv = l
-                break
+        conexao = self.__conexao_factory.get_conexao()
+        cursor = conexao.cursor()
+        cursor.execute(
+            "SELECT id, titulo, isbn, paginas, ano, resumo, categoria_id, editora_id, autor_id FROM livros WHERE id = %s", (livro_id,))
+        resultado = cursor.fetchone()
+        cursor.close()
+        conexao.close()
+        if (resultado):
+            categoria = CategoriaDAO().buscar_por_id(resultado[6])
+            editora = EditoraDAO().buscar_por_id(resultado[7])
+            autor = AutorDAO().buscar_por_id(resultado[8])
+            liv = Livro(resultado[1], resultado[2], resultado[3], resultado[4],
+                        resultado[5], categoria, editora, autor)
+            liv.id = resultado[0]
         return liv
-    
-    def ultimo_id(self) -> int:
-        index = len(self.__livros) -1
-        if (index == -1):
-            id = 0
-        else:
-            id = self.__livros[index].id
-        return id
-    

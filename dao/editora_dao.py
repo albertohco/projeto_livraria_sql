@@ -1,6 +1,7 @@
 from model.editora import Editora
 from database.conexao_factory import ConexaoFactory
 
+
 class EditoraDAO:
 
     def __init__(self):
@@ -10,11 +11,12 @@ class EditoraDAO:
         editoras = list()
         conexao = self.__conexao_factory.get_conexao()
         cursor = conexao.cursor()
-        cursor.execute("SELECT nome, endereco, telefone, id FROM editoras")
+        cursor.execute("SELECT id, nome, endereco, telefone FROM editoras")
         resultados = cursor.fetchall()
         for resultado in resultados:
-            editora = Editora(resultado[0], resultado[1], resultado[2], resultado[3])
-            editoras.append(editora)
+            edi = Editora(resultado[1], resultado[2], resultado[3])
+            edi.id = resultado[0]
+            editoras.append(edi)
         cursor.close()
         conexao.close()
         return editoras
@@ -22,7 +24,8 @@ class EditoraDAO:
     def adicionar(self, editora: Editora) -> None:
         conexao = self.__conexao_factory.get_conexao()
         cursor = conexao.cursor()
-        cursor.execute(f"INSERT INTO editoras (nome, endereco, telefone) VALUES ('{editora.nome}', '{editora.endereco}', '{editora.telefone}')")
+        cursor.execute(
+            f"INSERT INTO editoras (nome, endereco, telefone) VALUES ('{editora.nome}', '{editora.endereco}', '{editora.telefone}')")
         conexao.commit()
         cursor.close()
         conexao.close()
@@ -40,13 +43,15 @@ class EditoraDAO:
         return True
 
     def buscar_por_id(self, editora_id) -> Editora:
-        editora = None
+        edi = None
         conexao = self.__conexao_factory.get_conexao()
         cursor = conexao.cursor()
-        cursor.execute("SELECT nome, endereco, telefone, id FROM editoras WHERE id = %s", (editora_id,))
+        cursor.execute(
+            "SELECT id, nome, endereco, telefone FROM editoras WHERE id = %s", (editora_id,))
         resultado = cursor.fetchone()
         if (resultado):
-            editora = Editora(resultado[0], resultado[1], resultado[2], resultado[3])
+            edi = Editora(resultado[1], resultado[2], resultado[3])
+            edi.id = resultado[0]
         cursor.close()
         conexao.close()
-        return editora
+        return edi

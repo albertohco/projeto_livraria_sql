@@ -1,6 +1,7 @@
 from model.categoria import Categoria
 from database.conexao_factory import ConexaoFactory
 
+
 class CategoriaDAO:
 
     def __init__(self):
@@ -13,7 +14,8 @@ class CategoriaDAO:
         cursor.execute("SELECT id, nome FROM categorias")
         resultados = cursor.fetchall()
         for resultado in resultados:
-            cat = Categoria(resultado[1],resultado[0])
+            cat = Categoria(resultado[1])
+            cat.id = resultado[0]
             categorias.append(cat)
         cursor.close()
         conexao.close()
@@ -22,7 +24,8 @@ class CategoriaDAO:
     def adicionar(self, categoria: Categoria) -> None:
         conexao = self.__conexao_factory.get_conexao()
         cursor = conexao.cursor()
-        cursor.execute(f"INSERT INTO categorias (nome) VALUES ('{categoria.nome}')")
+        cursor.execute(
+            f"INSERT INTO categorias (nome) VALUES ('{categoria.nome}')")
         conexao.commit()
         cursor.close()
         conexao.close()
@@ -43,11 +46,12 @@ class CategoriaDAO:
         cat = None
         conexao = self.__conexao_factory.get_conexao()
         cursor = conexao.cursor()
-        cursor.execute("SELECT id, nome FROM categorias WHERE id= %s", (categoria_id,))
+        cursor.execute(
+            "SELECT id, nome FROM categorias WHERE id= %s", (categoria_id,))
         resultado = cursor.fetchone()
         if resultado:
-            cat = Categoria(resultado[1],resultado[0])
+            cat = Categoria(resultado[1])
+            cat.id = resultado[0]
         cursor.close()
         conexao.close()
         return cat
-   
