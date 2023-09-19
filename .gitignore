@@ -1,6 +1,6 @@
 __pycache__
 venv
-#.vscode
+.vscode
 editoras_csv_teste.py
 editoras_json_teste.py
 teste.csv
@@ -9,3 +9,4 @@ teste2.csv
 teste3.csv
 teste4.csv
 teste5.py
+teste6.json

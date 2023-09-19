@@ -20,7 +20,7 @@ def ler_json(nome_arquivo_json) -> list[dict]:
 
 # Página 28
 def ler_json_e_gera_uma_lista_de_editoras(nome_arquivo_json) -> list[Editora]:
-    with (open(nome_arquivo_json)) as arquivo_json:
+    with (open(nome_arquivo_json, encoding='utf-8')) as arquivo_json:
         dados = json.load(arquivo_json)
         lista_editoras = list()
         for dicionario in dados:
@@ -44,7 +44,7 @@ def criando_json_usando_lista_de_dict(lista_dict, nome_novo_arquivo) -> None:
 
 # Página 30
 def criando_json_usando_lista_de_editoras(lista_editoras, nome_novo_arquivo) -> None:
-    with open(nome_novo_arquivo, 'w', newline='') as novo_arquivo:
+    with open(nome_novo_arquivo, 'w', encoding='utf-8', newline='') as novo_arquivo:
         editoras_dict = list()
         for editora in lista_editoras:
             editoras_dict.append(editora.__dict__)
