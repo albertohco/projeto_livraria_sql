@@ -1,8 +1,11 @@
 __pycache__
 venv
 #.vscode
-#editoras_csv_teste.py
-#editoras_json_teste.py
-#teste.csv
-#teste.json
-#teste2.csv
+editoras_csv_teste.py
+editoras_json_teste.py
+teste.csv
+teste.json
+teste2.csv
+teste3.csv
+teste4.csv
+teste5.py

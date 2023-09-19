@@ -1,3 +1,5 @@
+# tem que colocar o seguinte paramentro na função open (encoding='utf-8')
+
 import csv
 
 from model.editora import Editora
@@ -72,7 +74,7 @@ def ler_csv_e_gera_uma_lista_de_dict() -> list[dict]:
 # Página 12
 def ler_csv_e_gera_uma_lista_de_editoras(nome_arquivo_csv) -> list[Editora]:
     lista_editoras = list()
-    with open(nome_arquivo_csv) as arquivo_csv:
+    with open(nome_arquivo_csv, encoding='utf-8') as arquivo_csv:
         csv_reader = csv.DictReader(arquivo_csv, delimiter=',')
         for dicionario in csv_reader:
             editora = Editora(
@@ -104,7 +106,7 @@ def criando_csv_usando_lista_de_editoras_pagina_14(lista_editoras) -> None:
 
 # Página 15
 def criando_csv_usando_lista_de_editoras(lista_editoras: list[Editora], nome_arquivo_csv: str) -> None:
-    with open(nome_arquivo_csv, 'w', newline='') as novo_arquivo:
+    with open(nome_arquivo_csv, 'w', encoding='utf-8', newline='') as novo_arquivo:
         escritor = csv.writer(novo_arquivo)
         escritor.writerow(['nome', 'endereço', 'telefone'])
         for editora in lista_editoras:
